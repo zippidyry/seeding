@@ -1,6 +1,6 @@
 module.exports = [
   {
-    article_article_title: "The People Tracking Every Touch, Pass And Tackle in the World Cup",
+    article_title: "The People Tracking Every Touch, Pass And Tackle in the World Cup",
     body: "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
     votes: -1,
     author: "tickle122",
