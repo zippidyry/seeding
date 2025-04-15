@@ -1,3 +1,7 @@
 # NC News Seeding
 
-- Instructions for this sprint can be found at https://l2c.northcoders.com/courses/be/seeding-nc-news
+Have an env test file with test database and an env dev file with dev database 
+
+Explain what values need to be added for a developer to connect to both databases locally.
+They need to have own evn files with connection to databases?
+
