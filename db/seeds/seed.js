@@ -3,7 +3,7 @@ const topics = require('../data/test-data/topics')
 const users = require('../data/test-data/users')
 const articles = require('../data/test-data/articles')
 const comments = require('../data/test-data/comments')
-const {convertTimestampToDate} = require('./utils')
+const {convertTimestampToDate,createRef} = require('./utils')
 const format = require('pg-format')
 const seed = ({ topicData, userData, articleData, commentData }) => {
   return db.query('DROP TABLE IF EXISTS comments;').then(()=>{
@@ -36,12 +36,10 @@ const seed = ({ topicData, userData, articleData, commentData }) => {
     return db.query(insertArticlesQuery)//assigned article_id
   }).then((result)=>{//want article id instead of article title using article title
      // Result{rows:[{}]}
-    const articleObjects = result.rows 
-    const TitleandId = {}
-    articleObjects.forEach((articleObject)=>{TitleandId[articleObject.title] = articleObject.article_id})
-    console.log(TitleandId)
+     console.log(result.rows)
+    const articleRefObject = createRef(result.rows)
     const formattedComments = comments.map((comment)=>{
-      const article_id = TitleandId[comment.article_title]
+      const article_id = articleRefObject[comment.article_title]
       const commentCorrected = convertTimestampToDate(comment)
       return [commentCorrected.body,commentCorrected.votes,commentCorrected.author,commentCorrected.created_at,article_id]})
     const insertCommentsQuery = format('INSERT INTO comments(body,votes,author,created_at,article_id) VALUES %L',formattedComments)
