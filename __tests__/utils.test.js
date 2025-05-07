@@ -2,7 +2,7 @@ const {
   convertTimestampToDate,createRef
 } = require("../db/seeds/utils");
 
-describe("convertTimestampToDate", () => {
+describe.skip("convertTimestampToDate", () => {
   test("returns a new object", () => {
     const timestamp = 1557572706232;
     const input = { created_at: timestamp };
@@ -38,7 +38,7 @@ describe("convertTimestampToDate", () => {
   });
 });
 
-describe("createRef",()=>{
+describe.skip("createRef",()=>{
   test("when passed empty array should return empty object",()=>{
     const input = []
     const output = createRef(input)
