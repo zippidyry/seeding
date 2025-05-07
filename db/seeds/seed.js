@@ -33,7 +33,6 @@ const seed = ({ topicData, userData, articleData, commentData }) => {
     return db.query(insertArticlesQuery)//assigned article_id
   }).then((result)=>{//want article id instead of article title using article title
      // Result{rows:[{}]}
-     console.log(result.rows)
     const articleRefObject = createRef(result.rows)
     const formattedComments = commentData.map((comment)=>{
       const article_id = articleRefObject[comment.article_title]
